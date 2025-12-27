@@ -73,7 +73,7 @@
   # Session Variables
   # ============================================
   home.sessionVariables = {
-    VISUAL = "vim";
+    # VISUAL is set by programs.neovim.defaultEditor
     PAGER = "less";
 
     # Ensure mise shims are in PATH
@@ -87,4 +87,9 @@
   # XDG Base Directories
   # ============================================
   xdg.enable = true;
+
+  # ============================================
+  # Mise Configuration
+  # ============================================
+  home.file.".config/mise/config.toml".source = ../mise/config.toml;
 }

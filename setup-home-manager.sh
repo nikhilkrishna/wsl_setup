@@ -46,9 +46,9 @@ git add home-manager/flake.lock
 git commit -m "Add flake.lock" || true
 
 # Setup mise config symlink
-log_info "Setting up mise configuration symlink..."
-mkdir -p ~/.config/mise
-ln -sf ~/dotfiles/mise/config.toml ~/.config/mise/config.toml
+# log_info "Setting up mise configuration symlink..."
+# mkdir -p ~/.config/mise
+# ln -sf ~/dotfiles/mise/config.toml ~/.config/mise/config.toml
 
 log_info "Home Manager setup complete!"
 echo ""

@@ -16,7 +16,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-      # This will be replaced with your actual username
       username = "technikhil";
       homeDirectory = "/home/${username}";
     in {

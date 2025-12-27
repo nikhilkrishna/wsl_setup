@@ -40,7 +40,7 @@
       "..." = "cd ../..";
       "...." = "cd ../../..";
 
-      # Modern replacements
+      # Modern ls replacements
       ls = "eza --icons";
       ll = "eza -la --icons --git";
       la = "eza -a --icons";
@@ -50,11 +50,13 @@
       find = "fd";
 
       # Git shortcuts
-      gs = "git status";
-      gd = "git diff";
-      gds = "git diff --staged";
-      gl = "git log --oneline -20";
-      gp = "git pull";
+      g = "git";
+      # gs = "git status";
+      # gd = "git diff";
+      # gds = "git diff --staged";
+      # gl = "git log --oneline -20";
+      # gp = "git pull";
+      # gc = "git commit";
 
       # Kubernetes shortcuts (when kubectl is installed via mise)
       k = "kubectl";
