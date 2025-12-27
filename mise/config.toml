@@ -1,0 +1,42 @@
+# Global mise configuration
+# Project-specific .mise.toml files override these defaults
+
+[settings]
+# Automatically install tools when entering a directory
+auto_install = true
+
+# Use shims for better IntelliJ compatibility
+shims_dir = "~/.local/share/mise/shims"
+
+# Experimental features
+experimental = true
+
+# Trust all .mise.toml files in ~/projects
+# For directories outside this path, you'll need to run: mise trust
+trusted_config_paths = ["~/projects"]
+
+[tools]
+# Global defaults - override per-project as needed
+# Uncomment the tools you need
+
+# Languages
+# python = "3.12"
+# node = "20"
+# go = "1.22"
+# java = "temurin-21"
+# ruby = "3.3"
+# rust = "stable"
+
+# Cloud/DevOps tools
+# kubectl = "latest"
+# helm = "latest"
+# terraform = "1.7"
+# aws-cli = "latest"
+
+# Build tools
+# gradle = "8.5"
+# maven = "3.9"
+
+[env]
+# Global environment variables
+# Add any variables that should always be set

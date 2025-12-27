@@ -1,0 +1,22 @@
+# Project Tool Configuration
+# Copy this to your project as .mise.toml and customize
+
+[tools]
+# Specify exact versions for reproducibility
+python = "3.12"
+node = "20"
+# go = "1.22"
+# java = "temurin-21"
+
+# DevOps tools
+kubectl = "1.29"
+helm = "3.14"
+# terraform = "1.7.0"
+
+# Build tools (uncomment as needed)
+# gradle = "8.5"
+# maven = "3.9"
+
+[env]
+# Project-specific environment variables
+# These are set when entering the directory
