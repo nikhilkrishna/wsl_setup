@@ -20,6 +20,38 @@
     ];
 
     initExtra = ''
+      # ============================================
+      # 1Password SSH Agent Relay (Windows → WSL)
+      # ============================================
+      # Prerequisites (on Windows):
+      #   1. 1Password desktop with SSH Agent enabled (Settings → Developer)
+      #   2. npiperelay installed: winget install albertony.npiperelay
+      #      OR: scoop install npiperelay
+      #   3. npiperelay.exe will be found at "C:\Program Files\npiperelay\"
+      # ============================================
+      export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
+      # Start the relay if socket doesn't exist
+      if [ ! -S "$SSH_AUTH_SOCK" ]; then
+        mkdir -p "$HOME/.1password"
+        rm -f "$SSH_AUTH_SOCK"
+        # Find npiperelay.exe (check common locations)
+        NPIPERELAY=""
+        if command -v npiperelay.exe &>/dev/null; then
+          NPIPERELAY="npiperelay.exe"
+        elif [ -f "/mnt/c/Program Files/npiperelay/npiperelay.exe" ]; then
+          NPIPERELAY="/mnt/c/Program Files/npiperelay/npiperelay.exe"
+        elif [ -f "/mnt/c/tools/npiperelay.exe" ]; then
+          NPIPERELAY="/mnt/c/tools/npiperelay.exe"
+        elif [ -f "/mnt/c/Users/$USER/scoop/shims/npiperelay.exe" ]; then
+          NPIPERELAY="/mnt/c/Users/$USER/scoop/shims/npiperelay.exe"
+        fi
+
+        if [ -n "$NPIPERELAY" ]; then
+          (setsid socat UNIX-LISTEN:"$SSH_AUTH_SOCK",fork EXEC:"$NPIPERELAY -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
+        fi
+      fi
+
       # mise initialization
       eval "$(mise activate bash)"
 

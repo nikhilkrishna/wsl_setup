@@ -58,6 +58,9 @@
     # The key orchestration tools
     mise             # Runtime version manager
 
+    # Security & secrets
+    _1password-cli       # 1Password CLI
+
     # Fonts - JetBrains Mono and FiraCode with Nerd Font patches
     # Note: Using the new nerd-fonts package format for nixos-unstable
     nerd-fonts.jetbrains-mono
