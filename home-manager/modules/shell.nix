@@ -64,6 +64,22 @@
       if command -v fzf &> /dev/null; then
         eval "$(fzf --bash)"
       fi
+
+      # ============================================
+      # Claude Code with AWS SSO pre-authentication
+      # ============================================
+      claude() {
+        local profile="sso-bedrock"
+
+        # Check if SSO session is valid
+        if ! aws sts get-caller-identity --profile "$profile" &>/dev/null; then
+          echo "AWS SSO session expired. Logging in..."
+          aws sso login --profile "$profile"
+        fi
+
+        # Run the actual claude command
+        command claude "$@"
+      }
     '';
 
     shellAliases = {

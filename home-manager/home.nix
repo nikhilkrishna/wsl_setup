@@ -13,6 +13,7 @@
     ./modules/git.nix
     ./modules/development.nix
     ./modules/secrets.nix
+    ./modules/claude.nix
   ];
 
   # ============================================
