@@ -26,7 +26,6 @@
 
       # Security defaults
       AddKeysToAgent yes
-      IdentitiesOnly yes
     '';
 
     # Host-specific configurations (no secrets)

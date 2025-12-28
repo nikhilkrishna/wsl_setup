@@ -27,7 +27,6 @@
       #   1. 1Password desktop with SSH Agent enabled (Settings → Developer)
       #   2. npiperelay installed: winget install albertony.npiperelay
       #      OR: scoop install npiperelay
-      #   3. npiperelay.exe will be found at "C:\Program Files\npiperelay\"
       # ============================================
       export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
@@ -45,6 +44,12 @@
           NPIPERELAY="/mnt/c/tools/npiperelay.exe"
         elif [ -f "/mnt/c/Users/$USER/scoop/shims/npiperelay.exe" ]; then
           NPIPERELAY="/mnt/c/Users/$USER/scoop/shims/npiperelay.exe"
+        fi
+        # Check winget packages location if not found yet
+        if [ -z "$NPIPERELAY" ]; then
+          WINGET_DIR="/mnt/c/Users/$USER/AppData/Local/Microsoft/WinGet/Packages"
+          WINGET_NPIPERELAY=$(find "$WINGET_DIR" -name "npiperelay.exe" 2>/dev/null | head -1)
+          [ -n "$WINGET_NPIPERELAY" ] && NPIPERELAY="$WINGET_NPIPERELAY"
         fi
 
         if [ -n "$NPIPERELAY" ]; then
@@ -118,7 +123,7 @@
       ml = "mise list";
 
       # Quick edits
-      ehome = "vim ~/dotfiles/home-manager/home.nix";
+      ehome = "nvim ~/dotfiles/home-manager/home.nix";
       # Note: This alias assumes dotfiles are located at ~/dotfiles
       reload = "home-manager switch --flake ~/dotfiles/home-manager#$USER && exec $SHELL";
     };
