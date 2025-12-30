@@ -23,11 +23,18 @@
         };
       };
 
-      username = "technikhil";
+      # Import user configuration
+      # Copy user-config.nix.example to user-config.nix and customize
+      userConfig = import ./user-config.nix;
+
+      username = userConfig.username;
       homeDirectory = "/home/${username}";
     in {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+
+        # Pass userConfig to all modules
+        extraSpecialArgs = { inherit userConfig; };
 
         modules = [
           ./home.nix

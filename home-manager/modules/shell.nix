@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, userConfig, ... }:
 
 {
   # ============================================
@@ -80,11 +80,11 @@
       # Claude Code with AWS SSO pre-authentication
       # ============================================
       claude() {
-        local profile="sso-bedrock"
+        local profile="${userConfig.claude.awsProfile}"
 
-        # Check if SSO session is valid
+        # Check if SSO session is valid for Claude's profile
         if ! aws sts get-caller-identity --profile "$profile" &>/dev/null; then
-          echo "AWS SSO session expired. Logging in..."
+          echo "AWS SSO session expired for Claude ($profile). Logging in..."
           aws sso login --profile "$profile"
         fi
 
@@ -110,12 +110,6 @@
 
       # Git shortcuts
       g = "git";
-      # gs = "git status";
-      # gd = "git diff";
-      # gds = "git diff --staged";
-      # gl = "git log --oneline -20";
-      # gp = "git pull";
-      # gc = "git commit";
 
       # Kubernetes shortcuts (when kubectl is installed via mise)
       k = "kubectl";

@@ -1,5 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, userConfig, ... }:
 
+let
+  windowsUserDir = "/mnt/c/Users/${userConfig.windowsUsername}";
+in
 {
   # ============================================
   # SSH Configuration (no secrets, just config)
@@ -57,12 +60,12 @@
   # ============================================
   # Config managed on Windows side, symlinked here
   home.file.".aws/config".source =
-    config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/NikhilKrishnaNair/.aws/config";
+    config.lib.file.mkOutOfStoreSymlink "${windowsUserDir}/.aws/config";
 
   # ============================================
   # Kubernetes Configuration (symlinked to Windows)
   # ============================================
   # EKS kubeconfig managed on Windows side, symlinked here
   home.file.".kube/config".source =
-    config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/NikhilKrishnaNair/.kube/eksconfig";
+    config.lib.file.mkOutOfStoreSymlink "${windowsUserDir}/.kube/eksconfig";
 }

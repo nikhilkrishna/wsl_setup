@@ -1,8 +1,31 @@
-# Overview
+# WSL Dotfiles
 
-This is a Nix Home Manager-based dotfiles repository for a WSL development environment. 
-It uses Nix flakes to declaratively manage the user environment, shell configuration, and development tools.
-It uses Mise to handle tools and libraries. 
+Nix Home Manager-based dotfiles for a WSL development environment. Uses Nix flakes for declarative configuration and Mise for runtime version management.
+
+## Quick Start
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+   cd ~/dotfiles
+   ```
+
+2. **Edit `home-manager/user-config.nix`** with your details:
+   - `username` - your WSL/Linux username (run `whoami`)
+   - `windowsUsername` - your Windows username (run `cmd.exe /c "echo %USERNAME%"`)
+   - `git.name` and `git.email` - your Git identity
+   - `aws.profile` and `aws.region` - for Claude Code with AWS Bedrock (optional)
+   - `kafka.*` - Kafka broker URLs if using the Kafka module (optional)
+
+3. **Run the installer:**
+   ```bash
+   ./install.sh
+   ```
+
+4. **Restart your shell:**
+   ```bash
+   exec $SHELL
+   ```
 
 ## Commands
 
@@ -16,16 +39,6 @@ reload
 home-manager switch --flake ~/dotfiles/home-manager#$USER
 ```
 
-### Initial Setup
-
-```bash
-# Full installation (includes Nix, home-manager setup)
-./install.sh
-
-# Just home-manager setup (if Nix already installed)
-./setup-home-manager.sh
-```
-
 ### Update Dependencies
 
 ```bash
@@ -33,7 +46,20 @@ cd ~/dotfiles/home-manager
 nix flake update
 ```
 
-# Use and contribution 
+## What's Included
 
-As you can see from the CLAUDE.md file this was created with the help of the Claude Code LLM. 
-The software is mainly for my use, but if you want to use if for inspiration feel free, just dont blame me if you dont like what it does.
+- **Shell**: Bash with Starship prompt, direnv, fzf integration
+- **Git**: Configured with delta for better diffs
+- **Editor**: Neovim with sensible defaults
+- **Tools**: Modern CLI replacements (eza, ripgrep, fd, bat)
+- **1Password**: SSH agent relay from Windows
+- **AWS**: SSO integration for Claude Code with Bedrock
+- **Kafka**: CLI tools with SSL/TLS support (see `docs/kafka-setup.md`)
+
+## Documentation
+
+- `docs/kafka-setup.md` - Kafka CLI setup guide
+
+## License and Use
+
+Created with the help of Claude Code. Free to use for inspiration - no warranties provided.
