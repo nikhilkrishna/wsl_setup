@@ -40,11 +40,24 @@ nix flake update
 ### Directory Structure
 
 - `home-manager/` - Nix Home Manager configuration
-  - `flake.nix` - Flake entry point, defines inputs and outputs
+  - `flake.nix` - Flake entry point, imports user-config and defines outputs
+  - `user-config.nix` - User-specific settings (edit with your values)
   - `home.nix` - Main configuration, imports modules and defines packages
   - `modules/` - Modular configurations split by concern
+- `docs/` - Setup documentation (e.g., Kafka setup guide)
 - `mise/` - Global mise (runtime version manager) configuration
 - `templates/` - Project templates for `.envrc` and `.mise.toml`
+
+### User Configuration
+
+All user-specific values are centralized in `home-manager/user-config.nix`:
+- `username` - WSL/Linux username
+- `windowsUsername` - Windows username (for symlinks)
+- `git.name`, `git.email` - Git identity
+- `aws.profile`, `aws.region` - AWS SSO settings
+- `kafka.staging.broker`, `kafka.live.broker` - Kafka broker URLs
+
+Edit this file with your personal values after cloning the repository.
 
 ### Module Organization
 
@@ -53,14 +66,17 @@ The configuration is split into focused modules in `home-manager/modules/`:
 - `shell.nix` - Bash, Starship prompt, direnv, fzf, shell aliases
 - `git.nix` - Git configuration, delta diff viewer
 - `development.nix` - Neovim, bat
-- `secrets.nix` - SSH configuration, AWS config symlinks
+- `secrets.nix` - SSH configuration, AWS/Kube config symlinks
 - `claude.nix` - Claude Code settings for AWS Bedrock integration
+- `kafka.nix` - Kafka CLI tools and SSL configuration
+
+All modules receive `userConfig` via `extraSpecialArgs` from flake.nix.
 
 ### Key Integrations
 
 **1Password SSH Agent**: The shell configuration relays SSH connections through the Windows 1Password agent via `npiperelay.exe`. The socket is at `~/.1password/agent.sock`.
 
-**AWS SSO**: The `claude` shell function wrapper automatically runs `aws sso login --profile sso-bedrock` if the SSO session has expired before launching Claude Code.
+**AWS SSO**: The `claude` shell function wrapper automatically runs `aws sso login` with the profile from `userConfig.aws.profile` if the SSO session has expired.
 
 **mise + direnv**: Used together for per-project tool versions. The shell defines a `use_mise` function for direnv that activates mise-managed tools. Global mise config is symlinked from `mise/config.toml`.
 
