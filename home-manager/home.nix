@@ -14,6 +14,7 @@
     ./modules/development.nix
     ./modules/secrets.nix
     ./modules/claude.nix
+    ./modules/kafka.nix
   ];
 
   # ============================================
