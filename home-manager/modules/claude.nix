@@ -16,12 +16,13 @@
       ANTHROPIC_MODEL = "global.anthropic.claude-opus-4-5-20251101-v1:0";
     };
     enabledPlugins = {
-      "example-plugin@claude-plugins-official" = true;
       "greptile@claude-plugins-official" = true;
       "pr-review-toolkit@claude-plugins-official" = true;
       "plugin-dev@claude-plugins-official" = true;
       "ralph-wiggum@claude-plugins-official" = true;
       "serena@claude-plugins-official" = true;
+      # Local plugin for extracting elaborate comments to documentation
+      "comment-extractor" = true;
     };
   };
 }
