@@ -58,4 +58,11 @@
   # Config managed on Windows side, symlinked here
   home.file.".aws/config".source =
     config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/NikhilKrishnaNair/.aws/config";
+
+  # ============================================
+  # Kubernetes Configuration (symlinked to Windows)
+  # ============================================
+  # EKS kubeconfig managed on Windows side, symlinked here
+  home.file.".kube/config".source =
+    config.lib.file.mkOutOfStoreSymlink "/mnt/c/Users/NikhilKrishnaNair/.kube/eksconfig";
 }

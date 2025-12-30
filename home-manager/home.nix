@@ -62,6 +62,13 @@
     # Security & secrets
     _1password-cli       # 1Password CLI
 
+    # Kubernetes authentication
+    kubelogin            # Azure AD auth for kubectl
+
+    # WSL integration
+    wslu                 # WSL utilities (wslview for opening URLs in Windows)
+    xdg-utils            # xdg-open (uses BROWSER env var)
+
     # Fonts - JetBrains Mono and FiraCode with Nerd Font patches
     # Note: Using the new nerd-fonts package format for nixos-unstable
     nerd-fonts.jetbrains-mono
@@ -85,6 +92,9 @@
 
     # Better colors
     TERM = "xterm-256color";
+
+    # Use Windows browser for OAuth flows in WSL
+    BROWSER = "wslview";
   };
 
   # ============================================
