@@ -15,11 +15,7 @@ in
     kafkactl     # Modern CLI with context support
   ];
 
-  # ============================================
-  # Kafka Certificates (symlinked from Windows)
-  # ============================================
-  # Certificates managed on Windows side, symlinked here.
-  # See docs/kafka-setup.md for Windows folder structure.
+  # See docs/kafka-setup.md for certificate structure and setup
   home.file.".kafka/certs".source =
     config.lib.file.mkOutOfStoreSymlink "${windowsUserDir}/.kafka/certs";
 
@@ -46,10 +42,7 @@ in
     ssl.truststore.location=${certsDir}/live/ca.pem
   '';
 
-  # ============================================
-  # kafkactl Configuration
-  # ============================================
-  # YAML config with named contexts for easy environment switching
+  # See docs/kafka-setup.md for kafkactl usage
   home.file.".config/kafkactl/config.yml".text = ''
     contexts:
       staging:

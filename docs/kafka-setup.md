@@ -57,6 +57,30 @@ This will:
 - Generate Kafka properties files in `~/.kafka/staging/` and `~/.kafka/live/`
 - Create the kafkactl configuration in `~/.config/kafkactl/config.yml`
 
+### Native Kafka Tools
+
+Configuration files are generated at:
+- `~/.kafka/staging/config.properties`
+- `~/.kafka/live/config.properties`
+
+These use PEM-based SSL configuration with paths pointing to the WSL symlinked certificates.
+
+### kafkactl
+
+kafkactl uses a YAML configuration at `~/.config/kafkactl/config.yml` with named contexts:
+
+```bash
+# Switch to staging
+kafkactl config use-context staging
+
+# Switch to live (default)
+kafkactl config use-context live
+```
+
+## Related Files
+
+- `home-manager/modules/kafka.nix` - Kafka tools and configuration
+
 ## Usage
 
 ### Using kafkactl (recommended)
@@ -78,6 +102,12 @@ kafkactl consume my-topic --from-beginning --exit
 
 # Switch to live environment
 kafkactl config use-context live
+
+# List topics
+kafkactl get topics
+
+# Describe consumer group
+kafkactl describe consumer-group my-group
 ```
 
 ### Using native Kafka scripts

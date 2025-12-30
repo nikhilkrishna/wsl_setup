@@ -20,14 +20,7 @@
     ];
 
     initExtra = ''
-      # ============================================
-      # 1Password SSH Agent Relay (Windows → WSL)
-      # ============================================
-      # Prerequisites (on Windows):
-      #   1. 1Password desktop with SSH Agent enabled (Settings → Developer)
-      #   2. npiperelay installed: winget install albertony.npiperelay
-      #      OR: scoop install npiperelay
-      # ============================================
+      # See docs/ssh-setup.md for 1Password SSH Agent Relay setup
       export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
       # Function to start the SSH agent relay
