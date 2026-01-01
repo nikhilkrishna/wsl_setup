@@ -20,9 +20,13 @@ trusted_config_paths = ["~/workspace"]
 python = "3.14"
 # node = "24"
 # go = "1.22"
-# java = "temurin-21"
 # ruby = "3.3"
 # rust = "stable"
+
+# Java - use per-project .mise.toml for version control
+# Available distributions: temurin, corretto, zulu, graalvm, openjdk
+# Example: java = "temurin-21" or java = "corretto-17"
+# See docs/java-setup.md for full setup guide
 
 # Cloud/DevOps tools
 kubectl = "latest"
@@ -31,10 +35,9 @@ k9s = "latest"
 # terraform = "1.7"
 aws-cli = "latest"
 
-# Build tools
-# gradle = "8.5"
-# maven = "3.9"
+# Build/Dev tools
 lazygit = "latest"
+# gradle = "9.2"   # Usually managed per-project or via wrapper
 
 
 [env]
