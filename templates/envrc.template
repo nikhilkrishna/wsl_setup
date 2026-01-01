@@ -50,11 +50,7 @@ use mise
 #   fi
 # fi
 
-# ============================================
-# Java/Gradle Configuration
-# ============================================
-# JAVA_HOME is automatically set by mise when java tool is active
-# Uncomment for project-isolated Gradle cache:
+# Java/Gradle - See docs/java-setup.md for full guide
 # export GRADLE_USER_HOME="${PWD}/.gradle"
 # export GRADLE_OPTS="-Dorg.gradle.daemon=true -Xmx2g"
 

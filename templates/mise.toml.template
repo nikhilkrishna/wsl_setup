@@ -7,14 +7,9 @@
 # node = "20"
 # go = "1.22"
 
-# ============================================
-# Java/Kotlin/Gradle (Spring projects)
-# ============================================
-# JDK distributions: temurin, corretto, zulu, graalvm, openjdk
-# Common versions: temurin-21 (LTS), temurin-17 (LTS), temurin-11 (legacy)
+# Java/Kotlin/Gradle - See docs/java-setup.md for full guide
 # java = "temurin-21"
-# kotlin = "2.0"        # Optional - Gradle typically manages Kotlin version
-# gradle = "9.2"        # Or use Gradle wrapper (./gradlew)
+# gradle = "9.2"
 
 # DevOps tools
 # kubectl = "1.29"
@@ -22,7 +17,4 @@
 # terraform = "1.7.0"
 
 [env]
-# Project-specific environment variables
-# These are set when entering the directory
-# JAVA_HOME is auto-set by mise when java tool is active
-# GRADLE_USER_HOME should be set in .envrc for project isolation
+# Project-specific environment variables (set when entering directory)

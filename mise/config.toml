@@ -23,10 +23,7 @@ python = "3.14"
 # ruby = "3.3"
 # rust = "stable"
 
-# Java - use per-project .mise.toml for version control
-# Available distributions: temurin, corretto, zulu, graalvm, openjdk
-# Example: java = "temurin-21" or java = "corretto-17"
-# See docs/java-setup.md for full setup guide
+# Java - per-project only, see docs/java-setup.md
 
 # Cloud/DevOps tools
 kubectl = "latest"
