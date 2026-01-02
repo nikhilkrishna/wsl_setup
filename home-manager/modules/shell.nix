@@ -103,6 +103,7 @@
 
       # Git shortcuts
       g = "git";
+      lzg = "lazygit";
 
       # Kubernetes shortcuts (when kubectl is installed via mise)
       k = "kubectl";

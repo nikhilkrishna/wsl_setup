@@ -9,6 +9,6 @@
   home.packages = with pkgs; [
     docker           # Docker CLI client
     docker-compose   # Docker Compose v2
-    lazydocker       # Terminal UI for Docker management
+    # lazydocker installed via mise (see mise/config.toml)
   ];
 }

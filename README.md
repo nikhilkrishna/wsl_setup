@@ -54,10 +54,12 @@ nix flake update
 - **Tools**: Modern CLI replacements (eza, ripgrep, fd, bat)
 - **1Password**: SSH agent relay from Windows
 - **AWS**: SSO integration for Claude Code with Bedrock
+- **Docker**: Native daemon with lazydocker TUI (see `docs/docker-setup.md`)
 - **Kafka**: CLI tools with SSL/TLS support (see `docs/kafka-setup.md`)
 
 ## Documentation
 
+- `docs/docker-setup.md` - Docker setup with WSL2 networking
 - `docs/kafka-setup.md` - Kafka CLI setup guide
 
 ## License and Use
