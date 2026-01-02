@@ -1,0 +1,71 @@
+# Project Environment Configuration
+# Copy this to your project as .envrc and customize
+
+# ============================================
+# Mise Tools Activation
+# ============================================
+# Activates project-specific tool versions from .mise.toml
+use mise
+
+# ============================================
+# AWS Configuration
+# ============================================
+# Set the AWS profile for this project
+# export AWS_PROFILE=dev
+
+# Ensure AWS SSO session is valid
+# if command -v aws &>/dev/null; then
+#  if ! aws sts get-caller-identity &>/dev/null 2>&1; then
+#    echo "AWS session expired or not logged in."
+#    echo "Run: aws sso login --profile $AWS_PROFILE"
+#  fi
+# fi
+
+# ============================================
+# Kubernetes Configuration
+# ============================================
+# Generate kubeconfig for this project's cluster
+# Uncomment and customize:
+#
+# export KUBECONFIG="${HOME}/.kube/configs/${PWD##*/}"
+# if [[ ! -f "$KUBECONFIG" ]]; then
+#   aws eks update-kubeconfig \
+#     --name my-cluster \
+#     --kubeconfig "$KUBECONFIG" \
+#     --alias "${PWD##*/}"
+# fi
+
+# ============================================
+# Vault Secrets (if using HashiCorp Vault)
+# ============================================
+# Uncomment if using Vault:
+#
+# export VAULT_ADDR="https://vault.company.internal"
+#
+# if command -v vault &>/dev/null; then
+#   if vault token lookup &>/dev/null 2>&1; then
+#     export DB_PASSWORD=$(vault kv get -field=password secret/myapp/db)
+#   else
+#     echo "Vault not authenticated. Run: vault login"
+#   fi
+# fi
+
+# Java/Gradle - See docs/java-setup.md for full guide
+# export GRADLE_USER_HOME="${PWD}/.gradle"
+# export GRADLE_OPTS="-Dorg.gradle.daemon=true -Xmx2g"
+
+# ============================================
+# Project-Specific Variables
+# ============================================
+# export PROJECT_NAME="${PWD##*/}"
+# export LOG_LEVEL=debug
+
+# Add project bin directory to PATH
+# PATH_add bin
+# PATH_add scripts
+
+# ============================================
+# Local Overrides (git-ignored)
+# ============================================
+# For machine-specific or sensitive overrides
+# dotenv_if_exists .env.local

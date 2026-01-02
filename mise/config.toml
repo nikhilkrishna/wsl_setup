@@ -1,0 +1,43 @@
+# Global mise configuration
+# Project-specific .mise.toml files override these defaults
+
+[settings]
+# Automatically install tools when entering a directory
+auto_install = true
+
+# Experimental features
+experimental = true
+
+# Trust all .mise.toml files in ~/workspace
+# For directories outside this path, you'll need to run: mise trust
+trusted_config_paths = ["~/workspace"]
+
+[tools]
+# Global defaults - override per-project as needed
+# Uncomment the tools you need
+
+# Languages
+python = "3.14"
+# node = "24"
+# go = "1.22"
+# ruby = "3.3"
+# rust = "stable"
+
+# Java - per-project only, see docs/java-setup.md
+
+# Cloud/DevOps tools
+kubectl = "latest"
+k9s = "latest"
+# helm = "latest"
+# terraform = "1.7"
+aws-cli = "latest"
+
+# Build/Dev tools
+lazygit = "latest"
+lazydocker = "latest"
+# gradle = "9.2"   # Usually managed per-project or via wrapper
+
+
+[env]
+# Global environment variables
+# Add any variables that should always be set
