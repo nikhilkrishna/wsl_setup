@@ -4,7 +4,8 @@
       "Bash(nix search nixpkgs kubelogin)",
       "Bash(nix search nixpkgs kafka)",
       "Bash(nix search nixpkgs kafkactl)",
-      "Bash(nix-shell -p kafkactl --run \"kafkactl --help\")"
+      "Bash(nix-shell -p kafkactl --run \"kafkactl --help\")",
+      "Bash(nix flake check /home/technikhil/dotfiles/home-manager)"
     ]
   }
 }

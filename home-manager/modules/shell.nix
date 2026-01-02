@@ -115,6 +115,13 @@
       mi = "mise install";
       ml = "mise list";
 
+      # Docker shortcuts
+      d = "docker";
+      dc = "docker compose";
+      dps = "docker ps";
+      dpsa = "docker ps -a";
+      lzd = "lazydocker";
+
       # Quick edits
       ehome = "nvim ~/dotfiles/home-manager/home.nix";
       # Note: This alias assumes dotfiles are located at ~/dotfiles

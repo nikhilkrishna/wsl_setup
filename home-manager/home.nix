@@ -15,6 +15,7 @@
     ./modules/secrets.nix
     ./modules/claude.nix
     ./modules/kafka.nix
+    ./modules/docker.nix
   ];
 
   # ============================================
