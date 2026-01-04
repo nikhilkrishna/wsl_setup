@@ -127,6 +127,11 @@
       ehome = "nvim ~/dotfiles/home-manager/home.nix";
       # Note: This alias assumes dotfiles are located at ~/dotfiles
       reload = "home-manager switch --flake ~/dotfiles/home-manager#$USER && exec $SHELL";
+
+      # Zellij (terminal multiplexer)
+      zj = "zellij";
+      zja = "zellij attach";
+      zjl = "zellij list-sessions";
     };
   };
 
