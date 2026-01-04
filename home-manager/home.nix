@@ -17,6 +17,7 @@
     ./modules/claude.nix
     ./modules/kafka.nix
     ./modules/docker.nix
+    ./modules/zellij.nix
   ];
 
   # ============================================
