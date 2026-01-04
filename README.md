@@ -6,7 +6,7 @@ Nix Home Manager-based dotfiles for a WSL development environment. Uses Nix flak
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+   git clone https://github.com/nikhilkrishna/wsl_setup.git ~/dotfiles
    cd ~/dotfiles
    ```
 
@@ -52,15 +52,17 @@ nix flake update
 - **Git**: Configured with delta for better diffs
 - **Editor**: Neovim with sensible defaults
 - **Tools**: Modern CLI replacements (eza, ripgrep, fd, bat)
-- **1Password**: SSH agent relay from Windows
-- **AWS**: SSO integration for Claude Code with Bedrock
+- **1Password**: SSH agent relay from Windows (see `docs/ssh-setup.md`)
+- **AWS**: SSO integration for Claude Code with Bedrock 
 - **Docker**: Native daemon with lazydocker TUI (see `docs/docker-setup.md`)
 - **Kafka**: CLI tools with SSL/TLS support (see `docs/kafka-setup.md`)
 
 ## Documentation
 
 - `docs/docker-setup.md` - Docker setup with WSL2 networking
-- `docs/kafka-setup.md` - Kafka CLI setup guide
+- `docs/kafka-setup.md`  - Kafka CLI setup guide
+- `docs/java-setup.md`   - JVM setup guide
+- `docs/ssh-setup.md`    - SSH setup guide
 
 ## License and Use
 

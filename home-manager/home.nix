@@ -10,6 +10,7 @@
   # Import modular configurations
   imports = [
     ./modules/shell.nix
+    ./modules/starship.nix
     ./modules/git.nix
     ./modules/development.nix
     ./modules/secrets.nix
