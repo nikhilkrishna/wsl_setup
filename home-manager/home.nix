@@ -42,6 +42,7 @@
     yq               # YAML processor
     htop             # Process viewer
     tree             # Directory tree
+    dos2unix         # Standardize line endings
 
     # Network tools
     curl
