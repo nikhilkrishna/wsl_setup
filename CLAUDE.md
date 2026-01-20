@@ -44,6 +44,7 @@ nix flake update
   - `user-config.nix` - User-specific settings (edit with your values)
   - `home.nix` - Main configuration, imports modules and defines packages
   - `modules/` - Modular configurations split by concern
+    - `scripts/` - External shell scripts sourced via `builtins.readFile`
 - `docs/` - Setup documentation (e.g., Kafka setup guide)
 - `mise/` - Global mise (runtime version manager) configuration
 - `templates/` - Project templates for `.envrc` and `.mise.toml`
@@ -72,6 +73,16 @@ The configuration is split into focused modules in `home-manager/modules/`:
 
 All modules receive `userConfig` via `extraSpecialArgs` from flake.nix.
 
+### Shell Scripts
+
+Shell scripts are extracted into `home-manager/modules/scripts/` and sourced into Nix configurations via `builtins.readFile`:
+
+- `bash-init.sh` - Main bash initialization (SSH relay, mise, fzf, completions)
+- `claude-wrapper.sh` - Claude function body with AWS SSO pre-auth (profile set by Nix)
+- `direnv-stdlib.sh` - Custom direnv functions (`use_mise`)
+
+This pattern keeps shell logic in `.sh` files for better syntax highlighting and editor support while still allowing Nix interpolation where needed.
+
 ### Key Integrations
 
 **1Password SSH Agent**: The shell configuration relays SSH connections through the Windows 1Password agent via `npiperelay.exe`. The socket is at `~/.1password/agent.sock`.
@@ -89,8 +100,9 @@ All modules receive `userConfig` via `extraSpecialArgs` from flake.nix.
 
 ## When Modifying
 
-- After editing any `.nix` file, run `reload` to apply changes
+- After editing any `.nix` or `.sh` file, run `reload` to apply changes
 - Test syntax before applying: `nix flake check ~/dotfiles/home-manager`
 - New packages go in `home.nix` under `home.packages`
-- Shell aliases and functions go in `modules/shell.nix`
+- Shell aliases go in `modules/shell.nix`
+- Shell functions and init logic go in `modules/scripts/` (sourced via `builtins.readFile`)
 - New modules should be added to the `imports` array in `home.nix`
