@@ -1,4 +1,10 @@
-# bash-init.sh - Main bash initialization script
+# functions.sh - All bash functions and initialization
+# This file is placed at ~/.local/share/dotfiles/functions.sh by home-manager
+# and sourced from .bashrc at runtime.
+
+# ============================================
+# SSH Agent Relay for 1Password (WSL)
+# ============================================
 # See docs/ssh-setup.md for 1Password SSH Agent Relay setup
 
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
@@ -36,15 +42,21 @@ if [ ! -S "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
   _start_ssh_relay
 fi
 
-# mise initialization
+# ============================================
+# Mise (runtime version manager)
+# ============================================
 eval "$(mise activate bash)"
 
-# Better bash completion
+# ============================================
+# Bash Completion
+# ============================================
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
-# fzf key bindings
+# ============================================
+# FZF Key Bindings
+# ============================================
 if command -v fzf &> /dev/null; then
   eval "$(fzf --bash)"
 fi
