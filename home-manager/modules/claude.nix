@@ -15,6 +15,7 @@
       AWS_REGION = userConfig.claude.awsRegion;
       ANTHROPIC_MODEL = "global.anthropic.claude-opus-4-5-20251101-v1:0";
     };
+    smallModelId = "anthropic.claude-haiku-4-5-20251001-v1:0";
     enabledPlugins = {
       "greptile@claude-plugins-official" = true;
       "pr-review-toolkit@claude-plugins-official" = true;
