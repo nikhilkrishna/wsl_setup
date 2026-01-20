@@ -35,7 +35,8 @@ aws-cli = "latest"
 # Build/Dev tools
 lazygit = "latest"
 lazydocker = "latest"
-# gradle = "9.2"   # Usually managed per-project or via wrapper
+claude-code = "latest"
+uv = "latest"
 
 
 [env]
