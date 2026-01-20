@@ -2,6 +2,34 @@
 
 {
   # ============================================
+  # Shell Functions File
+  # ============================================
+  # Place functions.sh at ~/.local/share/dotfiles/functions.sh
+  # This is sourced at runtime instead of being embedded in .bashrc
+  home.file.".local/share/dotfiles/functions.sh" = {
+    text = ''
+      ${builtins.readFile ./scripts/functions.sh}
+
+      # ============================================
+      # Claude Code with AWS SSO pre-authentication
+      # ============================================
+      claude() {
+        local profile="${userConfig.claude.awsProfile}"
+
+        # Check if SSO session is valid for Claude's profile
+        if ! aws sts get-caller-identity --profile "$profile" &>/dev/null; then
+          echo "AWS SSO session expired for Claude ($profile). Logging in..."
+          aws sso login --profile "$profile"
+        fi
+
+        # Run the actual claude command
+        command claude "$@"
+      }
+    '';
+    executable = true;
+  };
+
+  # ============================================
   # Bash Configuration
   # ============================================
   programs.bash = {
@@ -20,15 +48,8 @@
     ];
 
     initExtra = ''
-      ${builtins.readFile ./scripts/bash-init.sh}
-
-      # ============================================
-      # Claude Code with AWS SSO pre-authentication
-      # ============================================
-      claude() {
-        local profile="${userConfig.claude.awsProfile}"
-        ${builtins.readFile ./scripts/claude-wrapper.sh}
-      }
+      # Source shell functions from home-manager managed file
+      source ~/.local/share/dotfiles/functions.sh
     '';
 
     shellAliases = {
@@ -48,6 +69,9 @@
 
       # Git shortcuts
       g = "git";
+      ga = "git add";
+      gco = "git checkout";
+      gp = "git push";
       lzg = "lazygit";
 
       # Kubernetes shortcuts (when kubectl is installed via mise)

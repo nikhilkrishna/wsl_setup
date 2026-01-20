@@ -36,6 +36,7 @@ aws-cli = "latest"
 lazygit = "latest"
 lazydocker = "latest"
 claude-code = "latest"
+uv = "latest"
 
 
 [env]
