@@ -36,7 +36,8 @@ in
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        # Key will be provided by agent
+        identitiesOnly = true;
+        identityFile = [ "~/.ssh/nikhilkrishna.pub" ];
       };
 
       "gitlab.com" = {
